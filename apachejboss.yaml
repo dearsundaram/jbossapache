@@ -1,0 +1,15 @@
+---
+- hosts: webservers
+  gather_facts: true
+  become_method: sudo
+  become_user: root
+  roles:
+    - apache
+
+
+- hosts: appservers
+  gather_facts: true
+  become_method: sudo
+  become_user: root
+  roles:
+   - jboss

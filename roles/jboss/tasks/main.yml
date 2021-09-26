@@ -1,2 +1,41 @@
----
-# tasks file for jboss
+- name: Install java to the JBOSS server
+  yum: 
+    name: java
+    state: present
+  become: true
+
+- name: Download wildfly zip
+  get_url: 
+    url: https://github.com/wildfly/wildfly/releases/download/25.0.0.Beta1/wildfly-25.0.0.Beta1.zip
+    dest: /opt
+  become: true
+
+- name: Unzip the wildfly 
+  unarchive:
+    src: /opt/wildfly-25.0.0.Beta1.zip
+    dest: /opt/
+    remote_src: yes
+  become: true
+
+- name: Download sample.war
+  get_url: 
+    url: https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+    dest: /opt/wildfly-25.0.0.Beta1/standalone/deployments
+  become: true
+
+- name: Replace the loop back ip with private ip in jboss
+  replace:
+    path: /opt/wildfly-25.0.0.Beta1/standalone/configuration/standalone.xml
+    regexp: '127.0.0.1'
+    replace: '172.31.44.10'
+    backup: yes
+  become: true
+
+- name: stop the jboss
+  command: pkill -9 java
+  ignore_errors: yes   ##if jboss is stopped already, this may give rc=1 and hence handling the error
+  become: true
+
+- name: start the jboss
+  shell: nohup /opt/wildfly-25.0.0.Beta1/bin/standalone.sh &
+  become: true

@@ -1,6 +1,5 @@
 [webservers]
-52.90.139.198 ansible_user=root
-
+3.109.201.106 ansible_ssh_user=sundar ansible_ssh_pass=root123 ansible_sudo_pass=root123
 
 [appservers]
-52.90.139.198 ansible_user=root
+52.66.202.129 ansible_ssh_user=sundar ansible_ssh_pass=root123 ansible_sudo_pass=root123
