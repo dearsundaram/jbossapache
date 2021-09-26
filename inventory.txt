@@ -1,0 +1,6 @@
+[webservers]
+52.90.139.198 ansible_user=root
+
+
+[appservers]
+52.90.139.198 ansible_user=root
