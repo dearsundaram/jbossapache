@@ -4,6 +4,12 @@
     state: present
   become: true
 
+- name: Install unzip binary
+  yum: 
+    name: unzip
+    state: present
+  become: true
+
 - name: Download wildfly zip
   get_url: 
     url: https://github.com/wildfly/wildfly/releases/download/25.0.0.Beta1/wildfly-25.0.0.Beta1.zip
@@ -27,7 +33,7 @@
   replace:
     path: /opt/wildfly-25.0.0.Beta1/standalone/configuration/standalone.xml
     regexp: '127.0.0.1'
-    replace: '172.31.44.10'
+    replace: '172.31.41.173'
     backup: yes
   become: true
 
