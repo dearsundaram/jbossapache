@@ -14,8 +14,8 @@
     path: /etc/httpd/conf/httpd.conf
     line: "{{ item }}"
   with_items:
-  - 'proxypass /sample http://172.31.44.10:8080/sample'
-  - 'proxypassreverse /sample http://172.31.44.10:8080/sample'
+  - 'proxypass /sample http://172.31.43.161:8080/sample'
+  - 'proxypassreverse /sample http://172.31.43.161:8080/sample'
   become: true
         
 
