@@ -1,2 +1,5 @@
 ---
 # vars file for jboss
+vars:
+  - newip: '127.0.0.1'
+  - oldip: '172.31.41.173'

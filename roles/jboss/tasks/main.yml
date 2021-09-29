@@ -1,5 +1,3 @@
----
--
 - name: Install java to the JBOSS server
   yum: 
     name: java
@@ -34,8 +32,8 @@
 - name: Replace the loop back ip with private ip in jboss
   replace:
     path: /opt/wildfly-25.0.0.Beta1/standalone/configuration/standalone.xml
-    regexp: '127.0.0.1'
-    replace: '172.31.41.173'
+    regexp: "{{ oldip }}"
+    replace: "{{ newip }}"
     backup: yes
   become: true
 
