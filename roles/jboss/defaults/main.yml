@@ -1,2 +1,4 @@
 ---
 # defaults file for jboss
+oldip: '127.0.0.1'
+newip: '172.31.2.246'
