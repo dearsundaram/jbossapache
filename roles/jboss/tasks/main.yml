@@ -1,3 +1,5 @@
+---
+-
 - name: Install java to the JBOSS server
   yum: 
     name: java
