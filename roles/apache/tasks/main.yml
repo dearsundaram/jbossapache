@@ -14,8 +14,8 @@
     path: /etc/httpd/conf/httpd.conf
     line: "{{ item }}"
   with_items:
-  - 'proxypass /sample http://"{{ newip }}":"{{ port_number }}"/sample'
-  - 'proxypassreverse /sample http://"{{ newip }}":"{{ port_number }}"/sample'
+  - 'proxypass /sample http://{{ newip }}:{{ port_number }}/sample'
+  - 'proxypassreverse /sample http://{{ newip }}:{{ port_number }}/sample'
   become: true
         
 
