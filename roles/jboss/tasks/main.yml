@@ -36,12 +36,16 @@
     replace: "{{ newip }}"
     backup: yes
   become: true
+  notify:
+    - stopjboss
+    - startjboss
 
-- name: stop the jboss
-  command: pkill -9 java
-  ignore_errors: yes   ##if jboss is stopped already, this may give rc=1 and hence handling the error
-  become: true
+- handlers:
+  - name: stopjboss
+    command: pkill -9 java
+    ignore_errors: yes   ##if jboss is stopped already, this may give rc=1 and hence handling the error
+    become: true
 
-- name: start the jboss
-  shell: nohup /opt/wildfly-25.0.0.Beta1/bin/standalone.sh &
-  become: true
+  - name: startjboss
+    shell: nohup /opt/wildfly-25.0.0.Beta1/bin/standalone.sh &
+    become: true
